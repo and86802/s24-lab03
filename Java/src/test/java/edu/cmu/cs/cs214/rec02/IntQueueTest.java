@@ -38,8 +38,8 @@ public class IntQueueTest {
     @Before
     public void setUp() {
         // comment/uncomment these lines to test each class
-        mQueue = new LinkedIntQueue();
-    //    mQueue = new ArrayIntQueue();
+        // mQueue = new LinkedIntQueue();
+       mQueue = new ArrayIntQueue();
 
         testList = new ArrayList<>(List.of(1, 2, 3));
     }
@@ -53,19 +53,25 @@ public class IntQueueTest {
     @Test
     public void testNotEmpty() {
         // TODO: write your own unit test
-        fail("Test not implemented");
+        // fail("Test not implemented");
+        mQueue.enqueue(testList.get(0));
+        assertTrue(!mQueue.isEmpty());
     }
 
     @Test
     public void testPeekEmptyQueue() {
         // TODO: write your own unit test
-        fail("Test not implemented");
+        // fail("Test not implemented");
+        assertNull(mQueue.peek());
     }
 
     @Test
     public void testPeekNoEmptyQueue() {
         // TODO: write your own unit test
-        fail("Test not implemented");
+        // fail("Test not implemented");
+        Integer testInt = testList.get(0);
+        mQueue.enqueue(testInt);
+        assertEquals(mQueue.peek(), testInt);
     }
 
     @Test
@@ -81,7 +87,12 @@ public class IntQueueTest {
     @Test
     public void testDequeue() {
         // TODO: write your own unit test
-        fail("Test not implemented");
+        // fail("Test not implemented");
+        for (Integer testInt : testList) {
+            mQueue.enqueue(testInt);
+        }
+        Integer testOut = mQueue.dequeue();
+        assertEquals(testOut, testList.get(0));
     }
 
     @Test
