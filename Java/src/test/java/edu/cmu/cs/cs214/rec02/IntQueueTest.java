@@ -39,7 +39,7 @@ public class IntQueueTest {
     public void setUp() {
         // comment/uncomment these lines to test each class
         // mQueue = new LinkedIntQueue();
-       mQueue = new ArrayIntQueue();
+        mQueue = new ArrayIntQueue();
 
         testList = new ArrayList<>(List.of(1, 2, 3));
     }
@@ -91,9 +91,20 @@ public class IntQueueTest {
         for (Integer testInt : testList) {
             mQueue.enqueue(testInt);
         }
-        Integer testOut = mQueue.dequeue();
-        assertEquals(testOut, testList.get(0));
+        for (Integer testOut : testList){
+            assertEquals(mQueue.dequeue(), testOut);
+        }
+        assertEquals(mQueue.dequeue(), null);
+
     }
+
+    @Test
+    public void testClear() {
+        mQueue.enqueue(testList.get(0));
+        mQueue.clear();
+        assertTrue(mQueue.isEmpty());
+    }
+
 
     @Test
     public void testContent() throws IOException {
